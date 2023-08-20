@@ -1,2 +1,2 @@
 # HealthcareEDA
-A EDA made with SQL
+An EDA made with SQL
