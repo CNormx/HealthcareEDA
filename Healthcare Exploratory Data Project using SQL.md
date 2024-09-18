@@ -6,8 +6,6 @@ Performing the analyzation will allow me to discover patterns, spot anomalies, f
 
 First I downloaded individual CSV files from Synthea to obtain the `Patients`, `Immunizations`, and `Encounters` tables. I then created the Synthea Healthcare dataset in BigQuery and imported the tables into it. 
 
-![Untitled](Healthcare%20Exploratory%20Data%20Project%20using%20SQL%200d53a78841754a6fb52cc4338fc577eb/Untitled.png)
-
 I had a set of questions regarding the dataset & I knew what data I was looking to retrieve. The requirements were to find active hospital patients older than 6 months old, who received the flu shot once in the year 2021.
 
 Other questions requested in order to build out a dashboard with the data were:
@@ -36,10 +34,6 @@ FROM `healthcareeda-396011.SyntheaHealthcare.patients` as pat
 --These are the columns I was able to extract the patient data from
 ```
 
-![Untitled](Healthcare%20Exploratory%20Data%20Project%20using%20SQL%200d53a78841754a6fb52cc4338fc577eb/Untitled%201.png)
-
-![Untitled](Healthcare%20Exploratory%20Data%20Project%20using%20SQL%200d53a78841754a6fb52cc4338fc577eb/Untitled%202.png)
-
 I noticed in both the First and Last name columns  3 numbers followed each entry, so I cleaned the two columns by using the **SUBSTR** function:
 
 ```sql
@@ -63,8 +57,6 @@ WHERE code = 140
 --description column contains flu vaccination details, each description 
 -- has it's own code, flu is 140. 
 ```
-
-![Untitled](Healthcare%20Exploratory%20Data%20Project%20using%20SQL%200d53a78841754a6fb52cc4338fc577eb/Untitled%203.png)
 
 ```mermaid
 erDiagram
@@ -120,8 +112,6 @@ left join flu_shot_2021 as flu
 --*Left Join used to recieve all the patient despite having their vaccinations or not
 ```
 
-![Untitled](Healthcare%20Exploratory%20Data%20Project%20using%20SQL%200d53a78841754a6fb52cc4338fc577eb/Untitled%204.png)
-
 A **CASE** statement was used to obtain a binary field in the `Patients` table  in order to add  the number of patients with flu shots and to create percentages easily.
 
 ```sql
@@ -145,8 +135,6 @@ FROM `healthcareeda-396011.SyntheaHealthcare.patients` as pat
 LEFT JOIN flu_shot_2021 as flu
 	ON pat.id = flu.patient
 ```
-
-![Untitled](Healthcare%20Exploratory%20Data%20Project%20using%20SQL%200d53a78841754a6fb52cc4338fc577eb/Untitled%205.png)
 
 An additional CTE was added to the query in order to narrow down the results and remove patients that have died or moved in the last few years. This information was stored within the `Encounters` table.
 The patients filtered by the `Encounters` table CTE are called in the last **WHERE** statement as `patient` in `active_patients`
@@ -185,8 +173,6 @@ left join flu_shot_2021 as flu
 where 1=1
 	and pat.id in(SELECT patient FROM active_patients) 
 ```
-
-![Untitled](Healthcare%20Exploratory%20Data%20Project%20using%20SQL%200d53a78841754a6fb52cc4338fc577eb/Untitled%206.png)
 
 The end query brings our results down to 995 from the initial 1163 .
 
