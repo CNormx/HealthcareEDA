@@ -16,5 +16,5 @@ The data files below can be found in `synthea_sample_data.zip`. <br>
 Code file:
 - `Healthcare Exploratory Data Project using SQL.md` contains all the SQL queries for data exploration and full exploratory analysis. 
 
-## Interesting Findings:
+## Summary:
 Through exploring the datasets and reading what values they held I was able to create queries that will result in visual charts to produce easily accessible data. This project allowed me to utilize SQL and learn how different statements such as CTE’s, CASE, SUBSTR, and LEFT JOIN can lead to successful and insightful data analyzing. Finding the variables that are required for statistics is key to delivering what stakeholders and a general audience can see within data.
