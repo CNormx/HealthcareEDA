@@ -19,4 +19,4 @@ Code file:
 ## Summary:
 Through exploring the datasets and reading what values they held I was able to create queries that will result in visual charts to produce easily accessible data. This project allowed me to utilize SQL and learn how different statements such as CTE’s, CASE, SUBSTR, and LEFT JOIN can lead to successful and insightful data analyzing. Finding the variables that are required for statistics is key to delivering what stakeholders and a general audience can see within data.
 
-[The Full EDA](https://cnormx.notion.site/Healthcare-Exploratory-Data-Project-using-SQL-0d53a78841754a6fb52cc4338fc577eb)
+[The Full Report](https://cnormx.notion.site/Healthcare-Exploratory-Data-Project-using-SQL-0d53a78841754a6fb52cc4338fc577eb)
